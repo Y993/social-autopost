@@ -20,9 +20,6 @@ jobs:
         with:
           node-version: 22
 
-        with:
-          node-version: 22
-
       - name: Refresh long-lived token and update secret
         env:
           THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
