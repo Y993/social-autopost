@@ -9,6 +9,17 @@
 - 投稿先の **Threads アカウント**（無ければ threads.net で作成）。
 - このコードを push した **GitHub リポジトリ**（既定 `Y993/social-autopost`、public）。
 
+## 0.5 ワークフロー2ファイルを追加（web UIで・最初に一度）
+> CLI のトークン権限の都合で、`.github/workflows/` の2ファイルだけリポジトリに入っていません。
+> 中身は `docs/workflows-to-add/` に同梱済みなので、GitHub の web UI で作成してください（ブラウザのセッションは権限を持っています）。
+
+各ファイルについて、リポジトリ画面で **Add file → Create new file**：
+1. ファイル名に `.github/workflows/post.yml` と入力（`/` を打つと階層が作られる）。
+2. 本文に `docs/workflows-to-add/post.yml` の中身を貼り付け → **Commit changes**。
+3. 同様に `.github/workflows/refresh-token.yml` を `docs/workflows-to-add/refresh-token.yml` の中身で作成。
+
+（or: ローカルで `gh auth refresh -h github.com -s workflow` を完了できる場合は、`.gitignore` の `.github/workflows/` 行を消して `git add .github/workflows && git commit && git push` でもOK）
+
 ## 1. Meta 開発者アプリを作る
 1. https://developers.facebook.com/ にThreadsと同じMetaアカウントでログイン → 右上 **My Apps** → **Create App**。
 2. ユースケースで **「Access the Threads API」** を選んで作成（無ければ App 作成後に製品/ユースケースから Threads を追加）。
