@@ -1,0 +1,67 @@
+[
+  {
+    "id": "saa-001",
+    "posts": [
+      {
+        "text": "SSE-S3 と SSE-KMS、なんとなくで選んでいませんか？\n\n鍵の使用を“監査”したいときの正解は？ A〜Dで答えてみて👇\n\n#AWS認定 #SAA",
+        "image": "images/q1.png"
+      },
+      {
+        "text": "正解は B（SSE-KMS）📌\nカスタマー管理キーならアクセス制御を細かくでき、鍵の使用が CloudTrail に残るので監査できる。\nSSE-S3 は鍵が Amazon 管理で“個別の監査ができない”のが分かれ目。",
+        "image": "images/a1.png"
+      }
+    ]
+  },
+  {
+    "id": "saa-002",
+    "posts": [
+      {
+        "text": "アクセス急増で“注文が消える”——フロントとワーカーを同期で直結していませんか？\n\n可用性を保って負荷を平滑化する構成は？👇\n\n#AWS認定 #SAA",
+        "image": "images/q2.png"
+      },
+      {
+        "text": "正解は B（SQS で疎結合）📌\nフロントは即投入、ワーカーは自分のペースで処理＝急増を吸収してメッセージ消失を防ぐ。\n同期直結は遅延が連鎖して落ちるのが落とし穴。",
+        "image": "images/a2.png"
+      }
+    ]
+  },
+  {
+    "id": "saa-003",
+    "posts": [
+      {
+        "text": "「CloudFront でしょ？」——と思った人ほど間違えるやつ。\n\nTCP/UDP のグローバル接続を安定して低レイテンシにするには？👇\n\n#AWS認定 #SAA",
+        "image": "images/q3.png"
+      },
+      {
+        "text": "正解は B（AWS Global Accelerator）📌\nエニーキャストの静的IPで最寄りエッジに取り込み、AWSバックボーン経由で TCP/UDP を安定低遅延に。\nCloudFront は HTTP/S のキャッシュ配信が主、が見極めポイント。",
+        "image": "images/a3.png"
+      }
+    ]
+  },
+  {
+    "id": "saa-004",
+    "posts": [
+      {
+        "text": "中断OK・締め切りゆるめのバッチ、オンデマンドで回してたら損してるかも。\n\nコスト最小の購入オプションは？ A〜Dで答えて！👇\n\n#AWS認定 #SAA",
+        "image": "images/q4.png"
+      },
+      {
+        "text": "正解は C（スポットインスタンス）📌\n中断耐性のあるバッチは最大約90%オフで回せる。\n常時稼働なら RI / Savings Plans、の使い分けが本番でも頻出。",
+        "image": "images/a4.png"
+      }
+    ]
+  },
+  {
+    "id": "saa-005",
+    "posts": [
+      {
+        "text": "ステートレス化のとき、セッションの置き場どこにする？（“2つ選ぶ”系は意外と割れる）\n\n複数EC2で低レイテンシに共有するなら？ 2つ選んでA〜Dで！👇\n\n#AWS認定 #SAA",
+        "image": "images/q5.png"
+      },
+      {
+        "text": "正解は A・B（ElastiCache for Redis / DynamoDB）📌\nローカルディスクは“障害で消える”、EBS共有は“そもそも共有向きでない”が分かれ目。",
+        "image": "images/a5.png"
+      }
+    ]
+  }
+]

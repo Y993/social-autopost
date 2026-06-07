@@ -1,0 +1,32 @@
+name: Refresh Threads token
+
+# 長期トークン(60日)を更新し、新トークンを THREADS_TOKEN シークレットへ書き戻す。
+# 書き戻しには Secrets 書込権限の PAT (GH_PAT) が必要。
+
+on:
+  schedule:
+    - cron: '0 4 * * 1'   # 毎週 月曜 04:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Refresh long-lived token and update secret
+        env:
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          NEW="$(node src/refresh-token.mjs)"
+          if [ -z "$NEW" ]; then echo "新トークンが空。中止。"; exit 1; fi
+          echo "::add-mask::$NEW"
+          printf '%s' "$NEW" | gh secret set THREADS_TOKEN --repo "$GITHUB_REPOSITORY"
+          echo "THREADS_TOKEN を更新しました。"

@@ -1,0 +1,52 @@
+name: Post to Threads
+
+on:
+  schedule:
+    - cron: '0 3 * * *'   # 毎日 03:00 UTC = 12:00 JST
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: '実投稿せず計画のみ表示'
+        type: boolean
+        default: false
+      campaign:
+        description: 'キャンペーン名（campaigns/ 配下）'
+        type: string
+        default: 'aws-saa'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: threads-post
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Post next thread
+        env:
+          THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
+          CAMPAIGN: ${{ inputs.campaign || 'aws-saa' }}
+          IMAGE_BASE_URL: https://y993.github.io/social-autopost
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: node src/post.mjs
+
+      - name: Commit advanced state
+        if: ${{ inputs.dry_run != true }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add campaigns/*/state.json
+          if git diff --cached --quiet; then
+            echo "状態変化なし（投稿対象なし等）"
+          else
+            git commit -m "chore: advance post queue state [skip ci]"
+            git push
+          fi
