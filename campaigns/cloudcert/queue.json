@@ -2,190 +2,348 @@
   {
     "id": "cc-intro",
     "posts": [
-      { "text": "クラウドの資格、「本番レベルで何度でも演習できる無料の場所」が無さすぎて、自分で作った。\nAWS / Azure / GCP、本試験レベルで1800問。全部無料・登録不要。\nまず1問だけでも解いてみてほしい。" },
-      { "text": "ここで解けます（登録不要・ブラウザだけ）\n→ https://cloudcert.app" }
+      {
+        "text": "クラウドの資格、「本番レベルで何度でも演習できる無料の場所」が無さすぎて、自分で作った。\nAWS / Azure / GCP、本試験レベルで1800問。全部無料・登録不要。\nまず1問だけでも解いてみてほしい。"
+      },
+      {
+        "text": "ここで解けます（登録不要・ブラウザだけ）\n→ https://cloudcert.app"
+      }
     ]
   },
   {
     "id": "cc-saa-sse",
     "posts": [
-      { "text": "【AWS SAA】S3で「暗号鍵がいつ使われたか」を監査したい。最適なのは？\n\nA. SSE-S3\nB. SSE-KMS（カスタマー管理キー）\nC. 暗号化しない\nD. バケットポリシーだけ\n\nA〜Dで👇 #AWS認定 #SAA" },
-      { "text": "正解は B。\nカスタマー管理キー(CMK)なら鍵の使用が CloudTrail に残り、「誰がいつ復号したか」を監査できる。\nSSE-S3 は鍵が Amazon 管理で個別の監査ができない——ここが分かれ目。" },
-      { "text": "この手の本番レベルの問題、全部無料で演習できます\n→ https://cloudcert.app/exams/aws-saa-c03/" }
+      {
+        "text": "【AWS SAA】S3で「暗号鍵がいつ使われたか」を監査したい。最適なのは？\n\nA. SSE-S3\nB. SSE-KMS（カスタマー管理キー）\nC. 暗号化しない\nD. バケットポリシーだけ\n\nA〜Dで👇 #AWS認定 #SAA",
+        "image": "images/q-cc-saa-sse.png"
+      },
+      {
+        "text": "正解は B。\nカスタマー管理キー(CMK)なら鍵の使用が CloudTrail に残り、「誰がいつ復号したか」を監査できる。\nSSE-S3 は鍵が Amazon 管理で個別の監査ができない——ここが分かれ目。",
+        "image": "images/a-cc-saa-sse.png"
+      },
+      {
+        "text": "この手の本番レベルの問題、全部無料で演習できます\n→ https://cloudcert.app/exams/aws-saa-c03/"
+      }
     ]
   },
   {
     "id": "cc-clf-shared",
     "posts": [
-      { "text": "【AWS CLF】責任共有モデル。EC2の「OSのパッチ適用」は誰の責任？\n\nA. AWS\nB. 利用者\nC. 自動で不要\nD. リージョンによる\n\nA〜Dで👇 #AWS認定" },
-      { "text": "正解は B（利用者）。\nAWSは「クラウドの」セキュリティ（物理・基盤）、利用者は「クラウド内の」セキュリティ（OS・ミドル・アプリ・データ）。EC2のOS更新は利用者側。" },
-      { "text": "CLFの問題も無料で演習\n→ https://cloudcert.app/exams/aws-clf-c02/" }
+      {
+        "text": "【AWS CLF】責任共有モデル。EC2の「OSのパッチ適用」は誰の責任？\n\nA. AWS\nB. 利用者\nC. 自動で不要\nD. リージョンによる\n\nA〜Dで👇 #AWS認定",
+        "image": "images/q-cc-clf-shared.png"
+      },
+      {
+        "text": "正解は B（利用者）。\nAWSは「クラウドの」セキュリティ（物理・基盤）、利用者は「クラウド内の」セキュリティ（OS・ミドル・アプリ・データ）。EC2のOS更新は利用者側。",
+        "image": "images/a-cc-clf-shared.png"
+      },
+      {
+        "text": "CLFの問題も無料で演習\n→ https://cloudcert.app/exams/aws-clf-c02/"
+      }
     ]
   },
   {
     "id": "cc-saa-spot",
     "posts": [
-      { "text": "【AWS SAA】夜間バッチで、中断されても再実行すればOKな処理。コスト最小の買い方は？\n\nA. オンデマンド\nB. リザーブド\nC. スポット\nD. Dedicated Host\n\nA〜Dで👇 #SAA" },
-      { "text": "正解は C（スポット）。\n中断耐性のある処理は最大約90%オフで回せる。\n常時稼働なら RI / Savings Plans、突発増は Auto Scaling——この使い分けが本番頻出。" },
-      { "text": "→ https://cloudcert.app/exams/aws-saa-c03/" }
+      {
+        "text": "【AWS SAA】夜間バッチで、中断されても再実行すればOKな処理。コスト最小の買い方は？\n\nA. オンデマンド\nB. リザーブド\nC. スポット\nD. Dedicated Host\n\nA〜Dで👇 #SAA",
+        "image": "images/q-cc-saa-spot.png"
+      },
+      {
+        "text": "正解は C（スポット）。\n中断耐性のある処理は最大約90%オフで回せる。\n常時稼働なら RI / Savings Plans、突発増は Auto Scaling——この使い分けが本番頻出。",
+        "image": "images/a-cc-saa-spot.png"
+      },
+      {
+        "text": "→ https://cloudcert.app/exams/aws-saa-c03/"
+      }
     ]
   },
   {
     "id": "cc-ebs-gp3",
     "posts": [
-      { "text": "EBSの gp2 と gp3、なんとなく gp2 のままにしてない？\n知らないと地味に損する違いを1つ。" },
-      { "text": "gp3 は基本料金が gp2 より安いうえ、IOPS とスループットを「容量と独立して」盛れる。\ngp2 は容量に比例してしか性能が上がらない。多くのケースで gp3 のほうが速くて安い。" },
-      { "text": "EBSの要点と試験での問われ方\n→ https://cloudcert.app/learn/amazon-ebs.html" }
+      {
+        "text": "EBSの gp2 と gp3、なんとなく gp2 のままにしてない？\n知らないと地味に損する違いを1つ。"
+      },
+      {
+        "text": "gp3 は基本料金が gp2 より安いうえ、IOPS とスループットを「容量と独立して」盛れる。\ngp2 は容量に比例してしか性能が上がらない。多くのケースで gp3 のほうが速くて安い。"
+      },
+      {
+        "text": "EBSの要点と試験での問われ方\n→ https://cloudcert.app/learn/amazon-ebs.html"
+      }
     ]
   },
   {
     "id": "cc-vpc-natigw",
     "posts": [
-      { "text": "VPCの NAT Gateway と Internet Gateway、どっちがどっち？で詰まる人へ。" },
-      { "text": "IGW＝VPCをインターネットに双方向接続（パブリック向け）。\nNAT GW＝プライベートサブネットから「外向き」だけ通す（外から開始する通信は通さない）。\n「外に出たいけど直接さらしたくない」時がNAT。" },
-      { "text": "VPC周りの整理に\n→ https://cloudcert.app/learn/amazon-vpc.html" }
+      {
+        "text": "VPCの NAT Gateway と Internet Gateway、どっちがどっち？で詰まる人へ。"
+      },
+      {
+        "text": "IGW＝VPCをインターネットに双方向接続（パブリック向け）。\nNAT GW＝プライベートサブネットから「外向き」だけ通す（外から開始する通信は通さない）。\n「外に出たいけど直接さらしたくない」時がNAT。"
+      },
+      {
+        "text": "VPC周りの整理に\n→ https://cloudcert.app/learn/amazon-vpc.html"
+      }
     ]
   },
   {
     "id": "cc-builder",
     "posts": [
-      { "text": "「この構成、どこがNG？」\nAWSの構成図をブラウザで描いて、おかしい所を判定してくれるツールも作った。\n例：パブリックに置いたDBに⛔が出る、みたいな。" },
-      { "text": "無料で触れます（登録不要）\n→ https://cloudcert.app/builder.html" }
+      {
+        "text": "「この構成、どこがNG？」\nAWSの構成図をブラウザで描いて、おかしい所を判定してくれるツールも作った。\n例：パブリックに置いたDBに⛔が出る、みたいな。"
+      },
+      {
+        "text": "無料で触れます（登録不要）\n→ https://cloudcert.app/builder.html"
+      }
     ]
   },
   {
     "id": "cc-study-meta",
     "posts": [
-      { "text": "資格の勉強、「参考書を1周してから問題集」の順番、実はちょっと遠回り。\n先に本番レベルの問題を浴びて、間違えた所だけ潰すほうが速い。" },
-      { "text": "うちの演習は、不正解が自動で「苦手プール」に入って、そこだけ復習できるようにしてある。独学のときに自分がほしかった機能。" },
-      { "text": "→ https://cloudcert.app" }
+      {
+        "text": "資格の勉強、「参考書を1周してから問題集」の順番、実はちょっと遠回り。\n先に本番レベルの問題を浴びて、間違えた所だけ潰すほうが速い。"
+      },
+      {
+        "text": "うちの演習は、不正解が自動で「苦手プール」に入って、そこだけ復習できるようにしてある。独学のときに自分がほしかった機能。"
+      },
+      {
+        "text": "→ https://cloudcert.app"
+      }
     ]
   },
   {
     "id": "cc-saa-sqs-fifo",
     "posts": [
-      { "text": "【AWS SAA】注文処理で「順序保証」と「重複なし」が必須。使うべきキューは？\n\nA. SQS 標準\nB. SQS FIFO\nC. SNS\nD. Kinesis\n\nA〜Dで👇 #SAA" },
-      { "text": "正解は B（FIFO）。\n標準キューは順序が前後する・まれに重複がある。順序と一意性が要るならFIFO。\nスループット最優先なら標準、が使い分け。" },
-      { "text": "→ https://cloudcert.app/exams/aws-saa-c03/" }
+      {
+        "text": "【AWS SAA】注文処理で「順序保証」と「重複なし」が必須。使うべきキューは？\n\nA. SQS 標準\nB. SQS FIFO\nC. SNS\nD. Kinesis\n\nA〜Dで👇 #SAA",
+        "image": "images/q-cc-saa-sqs-fifo.png"
+      },
+      {
+        "text": "正解は B（FIFO）。\n標準キューは順序が前後する・まれに重複がある。順序と一意性が要るならFIFO。\nスループット最優先なら標準、が使い分け。",
+        "image": "images/a-cc-saa-sqs-fifo.png"
+      },
+      {
+        "text": "→ https://cloudcert.app/exams/aws-saa-c03/"
+      }
     ]
   },
   {
     "id": "cc-saa-s3class",
     "posts": [
-      { "text": "【AWS SAA】数年保管、取り出しは年1回あるかどうか。最安のS3クラスは？\n\nA. S3 標準\nB. 標準-IA\nC. Glacier Deep Archive\nD. Intelligent-Tiering\n\nA〜Dで👇 #SAA" },
-      { "text": "正解は C（Glacier Deep Archive）。\nほぼ取り出さない長期保管の最安。取り出しに時間がかかるのが前提。\nアクセス頻度が読めないなら Intelligent-Tiering が無難。" },
-      { "text": "S3の整理に→ https://cloudcert.app/learn/amazon-s3.html" }
+      {
+        "text": "【AWS SAA】数年保管、取り出しは年1回あるかどうか。最安のS3クラスは？\n\nA. S3 標準\nB. 標準-IA\nC. Glacier Deep Archive\nD. Intelligent-Tiering\n\nA〜Dで👇 #SAA",
+        "image": "images/q-cc-saa-s3class.png"
+      },
+      {
+        "text": "正解は C（Glacier Deep Archive）。\nほぼ取り出さない長期保管の最安。取り出しに時間がかかるのが前提。\nアクセス頻度が読めないなら Intelligent-Tiering が無難。",
+        "image": "images/a-cc-saa-s3class.png"
+      },
+      {
+        "text": "S3の整理に→ https://cloudcert.app/learn/amazon-s3.html"
+      }
     ]
   },
   {
     "id": "cc-saa-rds-multiaz",
     "posts": [
-      { "text": "【AWS SAA】RDSの「マルチAZ」と「リードレプリカ」、ごっちゃにしてない？" },
-      { "text": "マルチAZ＝可用性。同期コピーを別AZに持ち、障害時に自動フェイルオーバー（読み書きはプライマリのみ）。\nリードレプリカ＝読み取りスケール。非同期コピーに読み取りを逃がす。\n「可用性」か「読み負荷」かで選ぶ。" },
-      { "text": "RDSの要点→ https://cloudcert.app/learn/amazon-rds.html" }
+      {
+        "text": "【AWS SAA】RDSの「マルチAZ」と「リードレプリカ」、ごっちゃにしてない？"
+      },
+      {
+        "text": "マルチAZ＝可用性。同期コピーを別AZに持ち、障害時に自動フェイルオーバー（読み書きはプライマリのみ）。\nリードレプリカ＝読み取りスケール。非同期コピーに読み取りを逃がす。\n「可用性」か「読み負荷」かで選ぶ。"
+      },
+      {
+        "text": "RDSの要点→ https://cloudcert.app/learn/amazon-rds.html"
+      }
     ]
   },
   {
     "id": "cc-clf-iamrole",
     "posts": [
-      { "text": "【AWS CLF】EC2上のアプリからS3に安全にアクセスさせたい。ベストは？\n\nA. アクセスキーをコードに書く\nB. IAMロールをEC2に付与\nC. ルートユーザーで実行\nD. バケットを公開する\n\nA〜Dで👇" },
-      { "text": "正解は B（IAMロール）。\nロールなら一時認証情報が自動で配られ、キーをコードに埋めなくて済む（漏洩リスク回避）。\n「キーを書かない」が鉄則。" },
-      { "text": "→ https://cloudcert.app/exams/aws-clf-c02/" }
+      {
+        "text": "【AWS CLF】EC2上のアプリからS3に安全にアクセスさせたい。ベストは？\n\nA. アクセスキーをコードに書く\nB. IAMロールをEC2に付与\nC. ルートユーザーで実行\nD. バケットを公開する\n\nA〜Dで👇",
+        "image": "images/q-cc-clf-iamrole.png"
+      },
+      {
+        "text": "正解は B（IAMロール）。\nロールなら一時認証情報が自動で配られ、キーをコードに埋めなくて済む（漏洩リスク回避）。\n「キーを書かない」が鉄則。",
+        "image": "images/a-cc-clf-iamrole.png"
+      },
+      {
+        "text": "→ https://cloudcert.app/exams/aws-clf-c02/"
+      }
     ]
   },
   {
     "id": "cc-saa-sg-nacl",
     "posts": [
-      { "text": "【AWS SAA】セキュリティグループ(SG)とネットワークACL(NACL)の違い、説明できる？" },
-      { "text": "SG＝インスタンス単位・ステートフル（戻りの通信は自動許可）・許可ルールのみ。\nNACL＝サブネット単位・ステートレス（戻りも明示が必要）・許可と拒否の両方。\n「拒否」を書けるのはNACLだけ。" },
-      { "text": "VPC周りの整理→ https://cloudcert.app/learn/amazon-vpc.html" }
+      {
+        "text": "【AWS SAA】セキュリティグループ(SG)とネットワークACL(NACL)の違い、説明できる？"
+      },
+      {
+        "text": "SG＝インスタンス単位・ステートフル（戻りの通信は自動許可）・許可ルールのみ。\nNACL＝サブネット単位・ステートレス（戻りも明示が必要）・許可と拒否の両方。\n「拒否」を書けるのはNACLだけ。"
+      },
+      {
+        "text": "VPC周りの整理→ https://cloudcert.app/learn/amazon-vpc.html"
+      }
     ]
   },
   {
     "id": "cc-aws-cw-ct",
     "posts": [
-      { "text": "【AWS】CloudWatch と CloudTrail、どっちが「誰がいつAPIを叩いたか」のログ？" },
-      { "text": "CloudTrail＝「誰がいつ何のAPIを呼んだか」の監査ログ。\nCloudWatch＝メトリクス/ログの監視（CPU使用率やアラーム）。\n「操作の追跡」はCloudTrail、「状態の監視」はCloudWatch。" },
-      { "text": "→ https://cloudcert.app/exams/aws-saa-c03/" }
+      {
+        "text": "【AWS】CloudWatch と CloudTrail、どっちが「誰がいつAPIを叩いたか」のログ？"
+      },
+      {
+        "text": "CloudTrail＝「誰がいつ何のAPIを呼んだか」の監査ログ。\nCloudWatch＝メトリクス/ログの監視（CPU使用率やアラーム）。\n「操作の追跡」はCloudTrail、「状態の監視」はCloudWatch。"
+      },
+      {
+        "text": "→ https://cloudcert.app/exams/aws-saa-c03/"
+      }
     ]
   },
   {
     "id": "cc-saa-lambda15",
     "posts": [
-      { "text": "【AWS SAA】1回30分かかる処理をLambdaで動かそうとして詰まった。なぜ？" },
-      { "text": "Lambdaは最大15分で強制終了。\n長時間・常駐・OS操作が要るなら EC2 や ECS/Fargate。\n「短時間・イベント駆動」がLambdaの土俵、が引っかけの核心。" },
-      { "text": "Lambdaの要点→ https://cloudcert.app/learn/aws-lambda.html" }
+      {
+        "text": "【AWS SAA】1回30分かかる処理をLambdaで動かそうとして詰まった。なぜ？"
+      },
+      {
+        "text": "Lambdaは最大15分で強制終了。\n長時間・常駐・OS操作が要るなら EC2 や ECS/Fargate。\n「短時間・イベント駆動」がLambdaの土俵、が引っかけの核心。"
+      },
+      {
+        "text": "Lambdaの要点→ https://cloudcert.app/learn/aws-lambda.html"
+      }
     ]
   },
   {
     "id": "cc-az900-paas",
     "posts": [
-      { "text": "【Azure AZ-900】OS管理はクラウド任せ、コードを置けば動く。このモデルは？\n\nA. IaaS\nB. PaaS\nC. SaaS\nD. オンプレ\n\nA〜Dで👇 #AZ900" },
-      { "text": "正解は B（PaaS）。\nOS・ミドルはクラウド側、利用者はアプリ/データに集中。\nIaaSはOS管理が残る、SaaSは完成アプリを使うだけ——この3段階を押さえる。" },
-      { "text": "→ https://cloudcert.app/exams/azure-az900/" }
+      {
+        "text": "【Azure AZ-900】OS管理はクラウド任せ、コードを置けば動く。このモデルは？\n\nA. IaaS\nB. PaaS\nC. SaaS\nD. オンプレ\n\nA〜Dで👇 #AZ900",
+        "image": "images/q-cc-az900-paas.png"
+      },
+      {
+        "text": "正解は B（PaaS）。\nOS・ミドルはクラウド側、利用者はアプリ/データに集中。\nIaaSはOS管理が残る、SaaSは完成アプリを使うだけ——この3段階を押さえる。",
+        "image": "images/a-cc-az900-paas.png"
+      },
+      {
+        "text": "→ https://cloudcert.app/exams/azure-az900/"
+      }
     ]
   },
   {
     "id": "cc-ai900-supervised",
     "posts": [
-      { "text": "【Azure AI-900】正解ラベル付きの過去データから予測モデルを作る。これは？\n\nA. 教師あり学習\nB. 教師なし学習\nC. 強化学習\nD. 生成AI\n\nA〜Dで👇 #AI900" },
-      { "text": "正解は A（教師あり学習）。\nラベル付きデータで「入力→正解」を学ぶ。\nラベルなしでグループ分けするのが教師なし（クラスタリング）。" },
-      { "text": "→ https://cloudcert.app/exams/azure-ai900/" }
+      {
+        "text": "【Azure AI-900】正解ラベル付きの過去データから予測モデルを作る。これは？\n\nA. 教師あり学習\nB. 教師なし学習\nC. 強化学習\nD. 生成AI\n\nA〜Dで👇 #AI900",
+        "image": "images/q-cc-ai900-supervised.png"
+      },
+      {
+        "text": "正解は A（教師あり学習）。\nラベル付きデータで「入力→正解」を学ぶ。\nラベルなしでグループ分けするのが教師なし（クラスタリング）。",
+        "image": "images/a-cc-ai900-supervised.png"
+      },
+      {
+        "text": "→ https://cloudcert.app/exams/azure-ai900/"
+      }
     ]
   },
   {
     "id": "cc-dva-dynamodb",
     "posts": [
-      { "text": "【AWS DVA】ミリ秒で応答、スケールも自動なフルマネージドNoSQL。これは？\n\nA. RDS\nB. DynamoDB\nC. Redshift\nD. Aurora\n\nA〜Dで👇 #AWS認定" },
-      { "text": "正解は B（DynamoDB）。\nキー設計が命：パーティションキーで分散させる。\nRDS/Auroraはリレーショナル、Redshiftは分析(DWH)——用途が別。" },
-      { "text": "DynamoDBの要点→ https://cloudcert.app/learn/amazon-dynamodb.html" }
+      {
+        "text": "【AWS DVA】ミリ秒で応答、スケールも自動なフルマネージドNoSQL。これは？\n\nA. RDS\nB. DynamoDB\nC. Redshift\nD. Aurora\n\nA〜Dで👇 #AWS認定",
+        "image": "images/q-cc-dva-dynamodb.png"
+      },
+      {
+        "text": "正解は B（DynamoDB）。\nキー設計が命：パーティションキーで分散させる。\nRDS/Auroraはリレーショナル、Redshiftは分析(DWH)——用途が別。",
+        "image": "images/a-cc-dva-dynamodb.png"
+      },
+      {
+        "text": "DynamoDBの要点→ https://cloudcert.app/learn/amazon-dynamodb.html"
+      }
     ]
   },
   {
     "id": "cc-tip-efs-ebs-s3",
     "posts": [
-      { "text": "EFS / EBS / S3、どれを使う？で迷ったら。" },
-      { "text": "EBS＝1台のEC2に付ける「ブロック」ディスク。\nEFS＝複数EC2で共有する「ファイル」システム。\nS3＝HTTPで出し入れする「オブジェクト」ストレージ。\n「共有したい」ならEFS、が分かれ目。" },
-      { "text": "ストレージの整理→ https://cloudcert.app/learn/" }
+      {
+        "text": "EFS / EBS / S3、どれを使う？で迷ったら。"
+      },
+      {
+        "text": "EBS＝1台のEC2に付ける「ブロック」ディスク。\nEFS＝複数EC2で共有する「ファイル」システム。\nS3＝HTTPで出し入れする「オブジェクト」ストレージ。\n「共有したい」ならEFS、が分かれ目。"
+      },
+      {
+        "text": "ストレージの整理→ https://cloudcert.app/learn/"
+      }
     ]
   },
   {
     "id": "cc-tip-ecs-eks",
     "posts": [
-      { "text": "ECS と EKS、名前が似てて混乱する人へ。" },
-      { "text": "ECS＝AWS独自のコンテナ管理（シンプルに始められる）。\nEKS＝マネージドKubernetes（k8sの知識・資産を活かせる）。\n「k8sでやりたい」ならEKS、そうでなければECSが手軽。" },
-      { "text": "→ https://cloudcert.app/learn/amazon-ecs.html" }
+      {
+        "text": "ECS と EKS、名前が似てて混乱する人へ。"
+      },
+      {
+        "text": "ECS＝AWS独自のコンテナ管理（シンプルに始められる）。\nEKS＝マネージドKubernetes（k8sの知識・資産を活かせる）。\n「k8sでやりたい」ならEKS、そうでなければECSが手軽。"
+      },
+      {
+        "text": "→ https://cloudcert.app/learn/amazon-ecs.html"
+      }
     ]
   },
   {
     "id": "cc-saa-route53",
     "posts": [
-      { "text": "【AWS SAA】複数リージョンのうち「一番近い（遅延が小さい）」拠点へ振り分けたい。Route 53のポリシーは？\n\nA. 加重\nB. レイテンシー\nC. フェイルオーバー\nD. 位置情報\n\nA〜Dで👇 #SAA" },
-      { "text": "正解は B（レイテンシーベース）。\n遅延が最小のリージョンへ誘導。\n障害時の切替はフェイルオーバー、比率で分けるなら加重——目的で選ぶ。" },
-      { "text": "→ https://cloudcert.app/exams/aws-saa-c03/" }
+      {
+        "text": "【AWS SAA】複数リージョンのうち「一番近い（遅延が小さい）」拠点へ振り分けたい。Route 53のポリシーは？\n\nA. 加重\nB. レイテンシー\nC. フェイルオーバー\nD. 位置情報\n\nA〜Dで👇 #SAA",
+        "image": "images/q-cc-saa-route53.png"
+      },
+      {
+        "text": "正解は B（レイテンシーベース）。\n遅延が最小のリージョンへ誘導。\n障害時の切替はフェイルオーバー、比率で分けるなら加重——目的で選ぶ。",
+        "image": "images/a-cc-saa-route53.png"
+      },
+      {
+        "text": "→ https://cloudcert.app/exams/aws-saa-c03/"
+      }
     ]
   },
   {
     "id": "cc-tip-savingsplans",
     "posts": [
-      { "text": "リザーブドインスタンス(RI)と Savings Plans、結局どっちが得？" },
-      { "text": "RI＝特定のインスタンスタイプ/リージョンに縛って割引。\nSavings Plans＝「時間あたり$」のコミットで、より柔軟に割引（タイプ変更にも追従）。\n柔軟性ならSavings Plansが今の主流。" },
-      { "text": "→ https://cloudcert.app/exams/aws-saa-c03/" }
+      {
+        "text": "リザーブドインスタンス(RI)と Savings Plans、結局どっちが得？"
+      },
+      {
+        "text": "RI＝特定のインスタンスタイプ/リージョンに縛って割引。\nSavings Plans＝「時間あたり$」のコミットで、より柔軟に割引（タイプ変更にも追従）。\n柔軟性ならSavings Plansが今の主流。"
+      },
+      {
+        "text": "→ https://cloudcert.app/exams/aws-saa-c03/"
+      }
     ]
   },
   {
     "id": "cc-meta-free",
     "posts": [
-      { "text": "「資格の問題集って地味に高いな…」で勉強が止まってた時期がある。\nだから自分の演習サイトは全部無料・登録不要にした。" },
-      { "text": "AWS / Azure / GCP、本試験レベルで1800問。広告は出るけど、問題と解説は全部タダ。\nお金じゃなくて「続けられるか」がボトルネックだと思うので。" },
-      { "text": "→ https://cloudcert.app" }
+      {
+        "text": "「資格の問題集って地味に高いな…」で勉強が止まってた時期がある。\nだから自分の演習サイトは全部無料・登録不要にした。"
+      },
+      {
+        "text": "AWS / Azure / GCP、本試験レベルで1800問。広告は出るけど、問題と解説は全部タダ。\nお金じゃなくて「続けられるか」がボトルネックだと思うので。"
+      },
+      {
+        "text": "→ https://cloudcert.app"
+      }
     ]
   },
   {
     "id": "cc-builder-2",
     "posts": [
-      { "text": "構成図を描いてて「あれ、このサブネットにNAT要る？」みたいに手が止まる瞬間、ない？\nそこを判定してくれるツールを作った。" },
-      { "text": "ブラウザで無料・登録不要→ https://cloudcert.app/builder.html" }
+      {
+        "text": "構成図を描いてて「あれ、このサブネットにNAT要る？」みたいに手が止まる瞬間、ない？\nそこを判定してくれるツールを作った。"
+      },
+      {
+        "text": "ブラウザで無料・登録不要→ https://cloudcert.app/builder.html"
+      }
     ]
   }
 ]

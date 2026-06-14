@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>CLOUDCERT_ 今日の一問 カード一括生成</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Zen+Old+Mincho:wght@600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink-0:#040a14;--ink-1:#070f1f;--ink-2:#0f1a2e;
+    --line:rgba(150,165,200,.12);--line-strong:rgba(150,165,200,.22);
+    --paper:#eef3fb;--mist:#c2cde0;--muted:#7e8cab;
+    --gold:#3fe0a4;--gold-deep:#2bbf88;--gold-soft:rgba(63,224,164,.12);
+    --cyan:#6fd6e6;--ok:#3fe0a4;
+    --serif:"Zen Old Mincho",serif;--sans:"Zen Kaku Gothic New",sans-serif;--latin:"Fraunces",serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#0a0f18;font-family:var(--sans);display:flex;flex-wrap:wrap;align-items:flex-start;gap:40px;padding:48px;}
+
+  .card{position:relative;width:1080px;height:1350px;overflow:hidden;color:var(--paper);isolation:isolate;
+    background:
+      radial-gradient(120% 80% at 12% -8%, #0e2238 0%, rgba(14,34,56,0) 46%),
+      radial-gradient(100% 70% at 110% 8%, rgba(63,224,164,.10) 0%, rgba(63,224,164,0) 40%),
+      linear-gradient(168deg,var(--ink-1) 0%,var(--ink-0) 100%);}
+  .card::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(160,185,230,.08) 1.4px,transparent 1.4px);background-size:46px 46px;background-position:-9px -9px;z-index:0;}
+  .card::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");opacity:.04;mix-blend-mode:overlay;z-index:0;pointer-events:none;}
+  .inner{position:relative;z-index:2;height:100%;padding:84px 80px 72px;display:flex;flex-direction:column;}
+  .hairframe{position:absolute;z-index:1;inset:34px;border:1px solid var(--line);border-radius:4px;pointer-events:none;}
+  .hairframe::before,.hairframe::after{content:"";position:absolute;width:14px;height:14px;border:1.5px solid var(--gold);opacity:.55;}
+  .hairframe::before{top:-1px;left:-1px;border-right:0;border-bottom:0;}
+  .hairframe::after{bottom:-1px;right:-1px;border-left:0;border-top:0;}
+
+  .brand{display:flex;align-items:center;justify-content:space-between;}
+  .brand-left{display:flex;align-items:center;gap:18px;}
+  .mono{width:60px;height:60px;border-radius:14px;background:linear-gradient(150deg,var(--gold),var(--gold-deep));
+    display:grid;place-items:center;font-family:var(--latin);font-weight:600;color:#04130c;font-size:34px;box-shadow:0 8px 24px rgba(63,224,164,.22),inset 0 1px 0 rgba(255,255,255,.35);}
+  .brand-name{font-family:var(--serif);font-weight:700;font-size:25px;letter-spacing:.05em;color:var(--paper);}
+  .brand-name span{display:block;font-family:var(--latin);font-style:italic;font-weight:500;font-size:13.5px;letter-spacing:.16em;color:var(--muted);margin-top:4px;}
+  .badge-unofficial{font-size:14px;letter-spacing:.22em;color:var(--muted);border:1px solid var(--line-strong);border-radius:999px;padding:8px 16px;}
+
+  .kicker{margin-top:62px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;}
+  .kicker h1{font-family:var(--serif);font-weight:900;color:var(--paper);font-size:74px;line-height:1;letter-spacing:.02em;}
+  .kicker h1 em{font-style:normal;color:var(--gold);}
+  .kicker .en{font-family:var(--latin);font-style:italic;font-weight:500;font-size:17px;letter-spacing:.24em;color:var(--muted);text-transform:uppercase;text-align:right;}
+  .kicker .en b{display:block;font-style:normal;font-weight:600;color:var(--cyan);letter-spacing:.2em;font-size:15px;margin-top:6px;}
+  .rule{height:1px;background:linear-gradient(90deg,var(--gold) 0%,var(--line) 38%,var(--line) 100%);margin-top:30px;}
+
+  .meta{display:flex;align-items:center;gap:14px;margin-top:24px;flex-wrap:wrap;}
+  .chip{font-size:19px;font-weight:500;color:var(--mist);background:rgba(255,255,255,.04);border:1px solid var(--line-strong);border-radius:999px;padding:9px 18px;letter-spacing:.02em;}
+  .chip.domain{color:var(--paper);border-color:rgba(63,224,164,.4);background:var(--gold-soft);}
+  .stars{font-size:21px;letter-spacing:3px;color:var(--gold);}
+  .stars .off{color:rgba(63,224,164,.28);}
+
+  .qwrap{margin-top:42px;display:flex;gap:24px;}
+  .qmark{font-family:var(--latin);font-style:italic;font-weight:600;font-size:60px;line-height:.9;color:var(--gold);flex:0 0 auto;}
+  .question{font-family:var(--sans);font-weight:500;font-size:37px;line-height:1.64;color:var(--paper);letter-spacing:.01em;}
+  .question strong{font-weight:700;color:#fff;border-bottom:2px solid rgba(63,224,164,.55);}
+
+  .options{margin-top:auto;display:flex;flex-direction:column;gap:15px;}
+  .opt{display:flex;align-items:flex-start;gap:20px;background:rgba(255,255,255,.028);border:1px solid var(--line);border-left:3px solid rgba(111,214,230,.4);border-radius:13px;padding:19px 24px;}
+  .opt .lt{font-family:var(--latin);font-weight:600;font-size:26px;color:var(--cyan);flex:0 0 auto;width:30px;line-height:1.25;}
+  .opt .ot{font-size:24px;line-height:1.5;color:var(--mist);font-weight:400;}
+
+  .foot{margin-top:34px;display:flex;align-items:center;justify-content:center;}
+  .replypill{font-size:21px;font-weight:700;color:#04130c;background:linear-gradient(150deg,var(--gold),var(--gold-deep));border-radius:999px;padding:13px 26px;letter-spacing:.04em;box-shadow:0 8px 22px rgba(63,224,164,.2);}
+
+  .answer-hero{margin-top:46px;display:flex;align-items:center;gap:26px;}
+  .answer-hero .ok{width:78px;height:78px;border-radius:18px;flex:0 0 auto;background:rgba(63,224,164,.13);border:1px solid rgba(63,224,164,.45);display:grid;place-items:center;font-size:42px;color:var(--ok);}
+  .answer-hero .lab{font-size:21px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase;font-family:var(--latin);font-style:italic;}
+  .answer-hero .big{font-family:var(--serif);font-weight:900;font-size:46px;color:var(--paper);line-height:1.15;margin-top:6px;}
+  .answer-hero .big em{font-style:normal;color:var(--ok);font-family:var(--latin);margin-right:14px;}
+  .explain{margin-top:38px;display:flex;flex-direction:column;gap:26px;}
+  .block .h{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-weight:700;font-size:25px;color:var(--gold);margin-bottom:12px;}
+  .block .h::before{content:"";width:22px;height:2px;background:var(--gold);display:inline-block;}
+  .block p{font-size:26px;line-height:1.6;color:var(--mist);}
+  .block.why p{color:var(--paper);}
+  .wrongs{display:flex;flex-direction:column;gap:9px;}
+  .wrongs .w{font-size:23px;line-height:1.5;color:var(--muted);display:flex;gap:12px;}
+  .wrongs .w b{color:var(--cyan);font-family:var(--latin);font-weight:600;flex:0 0 auto;}
+  .cta{margin-top:auto;background:linear-gradient(100deg,rgba(63,224,164,.12),rgba(63,224,164,.03));border:1px solid rgba(63,224,164,.32);border-radius:16px;padding:24px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+  .cta .txt{font-size:23px;line-height:1.45;color:var(--paper);font-weight:500;}
+  .cta .txt b{color:var(--gold);font-weight:700;}
+  .cta .txt span{display:block;font-size:18px;color:var(--muted);margin-top:4px;letter-spacing:.02em;}
+  .cta .arrow{font-family:var(--latin);font-style:italic;color:var(--gold);font-size:22px;white-space:nowrap;}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+/* ===== ① ブランド設定（CLOUDCERT_ / 黒眼鏡） ===== */
+const BRAND     = "クラウド資格 今日の一問";
+const BRAND_SUB = "CLOUDCERT_ · DAILY DRILL";
+const UNOFFICIAL= "";
+const CTA_MAIN  = "本試験レベル1800問を無料で演習";
+const CTA_SUB   = "間違えた問題だけ自動で復習できる";
+const CTA_ARROW = "▶ cloudcert.app";
+
+/* ===== ② 問題データ（id は queue の cc-* に対応） ===== */
+const Q=[
+{id:"cc-saa-sse",no:"AWS SAA",domain:"S3 · 暗号化",type:"4択・1つ選ぶ",stars:2,
+ q:'S3で暗号鍵が<strong>いつ・誰に使われたかを監査</strong>したい。最適な暗号化は？',
+ o:["SSE-S3（Amazon管理キー）","SSE-KMS（カスタマー管理キー）","暗号化しない","バケットポリシーだけ"],
+ ans:"B",name:"SSE-KMS（カスタマー管理キー）",
+ why:"カスタマー管理キー(CMK)なら鍵の使用がCloudTrailに記録され、誰がいつ復号したかを監査できる。キーポリシーで細かいアクセス制御も可能。",
+ w:[["A","SSE-S3は鍵がAmazon管理で、個別の使用監査ができない"],["C","暗号化なしでは保管時暗号化の要件を満たさない"],["D","バケットポリシーは公開制御で、鍵の監査の仕組みではない"]]},
+
+{id:"cc-clf-shared",no:"AWS CLF",domain:"責任共有モデル",type:"4択・1つ選ぶ",stars:1,
+ q:'EC2の<strong>OSのパッチ適用</strong>は誰の責任？',
+ o:["AWS","利用者","自動で適用され不要","リージョンによる"],
+ ans:"B",name:"利用者",
+ why:"AWSは「クラウドの」セキュリティ（物理・基盤）、利用者は「クラウド内の」セキュリティ（OS・ミドル・アプリ・データ）。EC2のOS更新は利用者側。",
+ w:[["A","AWSの責任は基盤まで。ゲストOSは含まない"],["C","OSパッチは自動では適用されない"],["D","責任分界はリージョンでは変わらない"]]},
+
+{id:"cc-saa-spot",no:"AWS SAA",domain:"コスト最適化",type:"4択・1つ選ぶ",stars:2,
+ q:'中断されても再実行すればOKな夜間バッチ。<strong>コスト最小</strong>の買い方は？',
+ o:["オンデマンド","リザーブド","スポット","Dedicated Host"],
+ ans:"C",name:"スポットインスタンス",
+ why:"中断耐性のある処理は最大約90%オフで実行できる。常時稼働ならRI/Savings Plans、突発増はAuto Scalingが基本。",
+ w:[["A","オンデマンドは割引がなく割高"],["B","RIは常時稼働への長期コミット向け"],["D","Dedicated Hostは物理専有で最も高コスト"]]},
+
+{id:"cc-saa-sqs-fifo",no:"AWS SAA",domain:"疎結合",type:"4択・1つ選ぶ",stars:2,
+ q:'注文処理で<strong>順序保証と重複なし</strong>が必須。使うべきキューは？',
+ o:["SQS 標準","SQS FIFO","SNS","Kinesis Data Streams"],
+ ans:"B",name:"SQS FIFO",
+ why:"FIFOは順序保証と重複排除（1回だけ処理）を提供する。標準キューは順序が前後し、まれに重複する。",
+ w:[["A","標準キューは順序・一意性を保証しない"],["C","SNSはPub/Sub通知でキューではない"],["D","Kinesisはストリーミング用途で要件に対し過剰"]]},
+
+{id:"cc-saa-s3class",no:"AWS SAA",domain:"ストレージ",type:"4択・1つ選ぶ",stars:2,
+ q:'数年保管・取り出しは年1回あるか。<strong>最安</strong>のS3クラスは？',
+ o:["S3 標準","標準-IA","Glacier Deep Archive","Intelligent-Tiering"],
+ ans:"C",name:"Glacier Deep Archive",
+ why:"ほぼ取り出さない長期保管の最安。取り出しに時間（時間単位）がかかるのが前提。",
+ w:[["A","標準は頻繁アクセス向けで割高"],["B","標準-IAは時々アクセスする用途向け"],["D","Intelligent-Tieringはアクセス頻度が読めない時に有効"]]},
+
+{id:"cc-clf-iamrole",no:"AWS CLF",domain:"IAM",type:"4択・1つ選ぶ",stars:1,
+ q:'EC2上のアプリからS3に<strong>安全にアクセス</strong>させたい。ベストは？',
+ o:["アクセスキーをコードに書く","IAMロールをEC2に付与","ルートユーザーで実行","バケットを公開する"],
+ ans:"B",name:"IAMロールをEC2に付与",
+ why:"ロールならEC2に一時認証情報が自動で配られ、キーをコードに埋め込まずに済む（漏洩リスクを回避）。",
+ w:[["A","コードにキーを書くと漏洩リスクが高い"],["C","ルートユーザー常用は最小権限の原則に反する"],["D","公開は重大な情報漏洩につながる"]]},
+
+{id:"cc-az900-paas",no:"Azure AZ-900",domain:"クラウド種別",type:"4択・1つ選ぶ",stars:1,
+ q:'OS管理はクラウド任せ、コードを置けば動く。このモデルは？',
+ o:["IaaS","PaaS","SaaS","オンプレミス"],
+ ans:"B",name:"PaaS",
+ why:"OS・ミドルはクラウド側が管理し、利用者はアプリ/データに集中できる。IaaSはOS管理が残り、SaaSは完成アプリを使うだけ。",
+ w:[["A","IaaSはOSの管理が利用者に残る"],["C","SaaSは自分のコードを動かす場ではない"],["D","オンプレは全て自前管理"]]},
+
+{id:"cc-ai900-supervised",no:"Azure AI-900",domain:"機械学習",type:"4択・1つ選ぶ",stars:1,
+ q:'<strong>正解ラベル付き</strong>の過去データから予測モデルを作る。これは？',
+ o:["教師あり学習","教師なし学習","強化学習","生成AI"],
+ ans:"A",name:"教師あり学習",
+ why:"ラベル付きデータで「入力→正解」の対応を学ぶのが教師あり学習。ラベルなしでグループ分けするのが教師なし学習。",
+ w:[["B","教師なしはラベルを使わずクラスタリング等を行う"],["C","強化学習は報酬を手がかりに試行錯誤で学ぶ"],["D","生成AIは新規コンテンツ生成が主目的"]]},
+
+{id:"cc-dva-dynamodb",no:"AWS DVA",domain:"データベース",type:"4択・1つ選ぶ",stars:2,
+ q:'ミリ秒応答・自動スケールの<strong>フルマネージドNoSQL</strong>は？',
+ o:["RDS","DynamoDB","Redshift","Aurora"],
+ ans:"B",name:"DynamoDB",
+ why:"フルマネージドNoSQLでミリ秒応答・自動スケール。パーティションキー設計で負荷を分散させるのが肝。",
+ w:[["A","RDSはリレーショナルDB"],["C","Redshiftは分析(DWH)用途"],["D","Auroraはリレーショナル(MySQL/PostgreSQL互換)"]]},
+
+{id:"cc-saa-route53",no:"AWS SAA",domain:"DNS/ルーティング",type:"4択・1つ選ぶ",stars:2,
+ q:'複数リージョンのうち<strong>遅延が最小</strong>の拠点へ振り分けたい。Route 53のポリシーは？',
+ o:["加重","レイテンシー","フェイルオーバー","位置情報"],
+ ans:"B",name:"レイテンシーベースルーティング",
+ why:"レイテンシーベースは遅延が最小のリージョンへ誘導する。障害切替はフェイルオーバー、比率分けは加重、地理指定は位置情報。",
+ w:[["A","加重は指定比率で振り分ける"],["C","フェイルオーバーは障害時の切替用"],["D","位置情報はユーザーの地理で固定的に振り分ける"]]},
+];
+
+const cloud='C_';
+function stars(n){let s="";for(let i=0;i<3;i++)s+= i<n? "★":'<span class="off">★</span>';return s;}
+function brand(){return `<div class="brand"><div class="brand-left"><div class="mono">${cloud}</div>
+ <div class="brand-name">${BRAND}<span>${BRAND_SUB}</span></div></div>
+ ${UNOFFICIAL?`<div class="badge-unofficial">${UNOFFICIAL}</div>`:""}</div>`;}
+
+function questionCard(d){return `<section class="card" id="q-${d.id}"><div class="hairframe"></div><div class="inner">
+  ${brand()}
+  <div class="kicker"><h1>今日の<em>一問</em></h1><div class="en">Today’s one question<b>${d.no}</b></div></div>
+  <div class="rule"></div>
+  <div class="meta"><span class="chip domain">${d.domain}</span><span class="chip">${d.type}</span><span class="stars">${stars(d.stars)}</span></div>
+  <div class="qwrap"><div class="qmark">Q.</div><div class="question">${d.q}</div></div>
+  <div class="options">${d.o.map((t,k)=>`<div class="opt"><div class="lt">${"ABCD"[k]}</div><div class="ot">${t}</div></div>`).join("")}</div>
+  <div class="foot"><div class="replypill">答えはリプ欄で 👇</div></div>
+ </div></section>`;}
+
+function answerCard(d){return `<section class="card" id="a-${d.id}"><div class="hairframe"></div><div class="inner">
+  ${brand()}
+  <div class="kicker"><h1>解答・<em>解説</em></h1><div class="en">Answer &amp; reason<b>${d.no}</b></div></div>
+  <div class="rule"></div>
+  <div class="answer-hero"><div class="ok">✓</div><div><div class="lab">Correct answer</div>
+    <div class="big"><em>${d.ans}</em><span>${d.name}</span></div></div></div>
+  <div class="explain">
+    <div class="block why"><div class="h">なぜ正解？</div><p>${d.why}</p></div>
+    <div class="block"><div class="h">ほかの選択肢は？</div><div class="wrongs">
+      ${d.w.map(x=>`<div class="w"><b>${x[0]}</b><span>${x[1]}</span></div>`).join("")}
+    </div></div>
+  </div>
+  <div class="cta"><div class="txt"><b>${CTA_MAIN}</b><span>${CTA_SUB}</span></div>
+    <div class="arrow">${CTA_ARROW}</div></div>
+ </div></section>`;}
+
+document.getElementById("root").innerHTML = Q.map(d=>questionCard(d)+answerCard(d)).join("");
+document.fonts.ready.then(()=>document.documentElement.classList.add('fonts-ready'));
+</script>
+</body>
+</html>
