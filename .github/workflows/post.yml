@@ -12,7 +12,7 @@ on:
       campaign:
         description: 'キャンペーン名（campaigns/ 配下）'
         type: string
-        default: 'aws-saa'
+        default: 'cloudcert'
 
 permissions:
   contents: write
@@ -33,7 +33,7 @@ jobs:
       - name: Post next thread
         env:
           THREADS_TOKEN: ${{ secrets.THREADS_TOKEN }}
-          CAMPAIGN: ${{ inputs.campaign || 'aws-saa' }}
+          CAMPAIGN: ${{ inputs.campaign || 'cloudcert' }}
           IMAGE_BASE_URL: https://y993.github.io/social-autopost
           DRY_RUN: ${{ inputs.dry_run }}
         run: node src/post.mjs
