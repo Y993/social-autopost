@@ -1,0 +1,64 @@
+[
+  {
+    "id": "cc-intro",
+    "posts": [
+      { "text": "クラウドの資格、「本番レベルで何度でも演習できる無料の場所」が無さすぎて、自分で作った。\nAWS / Azure / GCP、本試験レベルで1800問。全部無料・登録不要。\nまず1問だけでも解いてみてほしい。" },
+      { "text": "ここで解けます（登録不要・ブラウザだけ）\n→ https://cloudcert.app" }
+    ]
+  },
+  {
+    "id": "cc-saa-sse",
+    "posts": [
+      { "text": "【AWS SAA】S3で「暗号鍵がいつ使われたか」を監査したい。最適なのは？\n\nA. SSE-S3\nB. SSE-KMS（カスタマー管理キー）\nC. 暗号化しない\nD. バケットポリシーだけ\n\nA〜Dで👇 #AWS認定 #SAA" },
+      { "text": "正解は B。\nカスタマー管理キー(CMK)なら鍵の使用が CloudTrail に残り、「誰がいつ復号したか」を監査できる。\nSSE-S3 は鍵が Amazon 管理で個別の監査ができない——ここが分かれ目。" },
+      { "text": "この手の本番レベルの問題、全部無料で演習できます\n→ https://cloudcert.app/exams/aws-saa-c03/" }
+    ]
+  },
+  {
+    "id": "cc-clf-shared",
+    "posts": [
+      { "text": "【AWS CLF】責任共有モデル。EC2の「OSのパッチ適用」は誰の責任？\n\nA. AWS\nB. 利用者\nC. 自動で不要\nD. リージョンによる\n\nA〜Dで👇 #AWS認定" },
+      { "text": "正解は B（利用者）。\nAWSは「クラウドの」セキュリティ（物理・基盤）、利用者は「クラウド内の」セキュリティ（OS・ミドル・アプリ・データ）。EC2のOS更新は利用者側。" },
+      { "text": "CLFの問題も無料で演習\n→ https://cloudcert.app/exams/aws-clf-c02/" }
+    ]
+  },
+  {
+    "id": "cc-saa-spot",
+    "posts": [
+      { "text": "【AWS SAA】夜間バッチで、中断されても再実行すればOKな処理。コスト最小の買い方は？\n\nA. オンデマンド\nB. リザーブド\nC. スポット\nD. Dedicated Host\n\nA〜Dで👇 #SAA" },
+      { "text": "正解は C（スポット）。\n中断耐性のある処理は最大約90%オフで回せる。\n常時稼働なら RI / Savings Plans、突発増は Auto Scaling——この使い分けが本番頻出。" },
+      { "text": "→ https://cloudcert.app/exams/aws-saa-c03/" }
+    ]
+  },
+  {
+    "id": "cc-ebs-gp3",
+    "posts": [
+      { "text": "EBSの gp2 と gp3、なんとなく gp2 のままにしてない？\n知らないと地味に損する違いを1つ。" },
+      { "text": "gp3 は基本料金が gp2 より安いうえ、IOPS とスループットを「容量と独立して」盛れる。\ngp2 は容量に比例してしか性能が上がらない。多くのケースで gp3 のほうが速くて安い。" },
+      { "text": "EBSの要点と試験での問われ方\n→ https://cloudcert.app/learn/amazon-ebs.html" }
+    ]
+  },
+  {
+    "id": "cc-vpc-natigw",
+    "posts": [
+      { "text": "VPCの NAT Gateway と Internet Gateway、どっちがどっち？で詰まる人へ。" },
+      { "text": "IGW＝VPCをインターネットに双方向接続（パブリック向け）。\nNAT GW＝プライベートサブネットから「外向き」だけ通す（外から開始する通信は通さない）。\n「外に出たいけど直接さらしたくない」時がNAT。" },
+      { "text": "VPC周りの整理に\n→ https://cloudcert.app/learn/amazon-vpc.html" }
+    ]
+  },
+  {
+    "id": "cc-builder",
+    "posts": [
+      { "text": "「この構成、どこがNG？」\nAWSの構成図をブラウザで描いて、おかしい所を判定してくれるツールも作った。\n例：パブリックに置いたDBに⛔が出る、みたいな。" },
+      { "text": "無料で触れます（登録不要）\n→ https://cloudcert.app/builder.html" }
+    ]
+  },
+  {
+    "id": "cc-study-meta",
+    "posts": [
+      { "text": "資格の勉強、「参考書を1周してから問題集」の順番、実はちょっと遠回り。\n先に本番レベルの問題を浴びて、間違えた所だけ潰すほうが速い。" },
+      { "text": "うちの演習は、不正解が自動で「苦手プール」に入って、そこだけ復習できるようにしてある。独学のときに自分がほしかった機能。" },
+      { "text": "→ https://cloudcert.app" }
+    ]
+  }
+]
